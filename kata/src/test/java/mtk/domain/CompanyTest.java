@@ -25,29 +25,11 @@ public class CompanyTest {
     @Test
     public void companyRenamed() {
         String proposedName = "Cybertron Unlimited, Ltd.";
-
         Company aCompany = Mockito.spy(this.company);
 
         aCompany.setName(proposedName);
 
         verify(aCompany).setName(proposedName);
-
         Assert.assertNotNull(aCompany.getName());
-    }
-
-    @Test
-    public void companyRenamed2() {
-        String proposedName = "Cybertron Unlimited, Ltd.";
-        Company aCompany = this.company;
-        aCompany.setName(proposedName);
-        Assert.assertEquals(proposedName, aCompany.getName());
-    }
-
-    @Test
-    public void companyCreatedAndVerifiedName() {
-        String proposedName = "Cybertron Unlimited, Ltd.";
-        Company aCompany   = new Company(proposedName);
-        Assert.assertEquals(proposedName, aCompany.getName());
-
     }
 }
