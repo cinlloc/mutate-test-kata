@@ -26,20 +26,23 @@ The domain for the kata is made up of two classes: Company and Employee:
 
 ![Domain Model](Company_Domain.png)
 
-1.  **Run all the unit tests in the `mtk.domain.CompanyTest` class.** They should all pass. Check the test coverage metrics using either maven output or a coverage reporting function in your IDE test runner. The coverage should be close to 100%. Good news: there are tests, they all pass, and they cover all of our business logic. Looks like the software is ready to ship!
+1. **Run all the unit tests in the `mtk.domain.CompanyTest` class.** They should all pass. Check the test coverage metrics using either maven output or a coverage reporting function in your IDE test runner. The coverage should be close to 100%. Good news: there are tests, they all pass, and they cover all of our business logic. Looks like the software is ready to ship!
 
-    Unfortunately that would be a terrible idea as the code is full of bugs. To prove it, just take a look at the `mtk.CompanyRunner` class, which contains some simple business logic in its `main()` method. Run `mtk.CompanyRunner.main()` and looks at the console output. Does it look right? How can we have all these bugs despite having all these test?
+    Unfortunately that would be a terrible idea as the code is full of bugs. 
+To prove it, just take a look at the `mtk.CompanyRunner` class, which contains some simple business logic in its `main()` method. Run `mtk.CompanyRunner.main()` and looks at the console output.
+Does it look right? How can we have all these bugs despite having all these tests?
+How can you imagine that a Runner or a Main class is proving anything????
 
-2.  **Run the unit tests with mutations**. Mutations will be introduced in your code by PIT - a mutation testing tool .
+3. **Run the unit tests with mutations**. Mutations will be introduced in your code by PIT - a mutation testing tool .
     1. **Enable the `pitest` maven profile** for the project. This profile is bound to `test` phase of the maven lifecycle.
     2. **Run the `test` task** in the module `kata`. (To run it from the command line with the profile activated, execute the `mvn test -P pitest` command.) With the profile enabled, this task will invoke the PIT framework to first introduce changes in the application code and then execute tests.
     3. **Inspect the results**. The results are written in HTML format into a file in the `target/pit-reports/YYYYMMDDHHMI` directory. Open this file in a browser - you should see quite a bit of red. This means that some of the code mutations managed to survive - were not caught by the unit tests. Which means that in fact our unit tests do not test what they are supposed to.
 
-3.  **Fix the test smells.** Each test in the test class exhibits one or more test smells. Going through the tests one by one, fix the smell and make sure the test actually does what it is supposed to. To help you, the comments in some of the test methods explicitly say what smell is present there. Once you remove the smell, the test should start failing. This is a good thing, because now we have tests that actually validate the behavior of our software. 
+4. **Fix the test smells.** Each test in the test class exhibits one or more test smells. Going through the tests one by one, fix the smell and make sure the test actually does what it is supposed to. To help you, the comments in some of the test methods explicitly say what smell is present there. Once you remove the smell, the test should start failing. This is a good thing, because now we have tests that actually validate the behavior of our software. 
 
-4.  **Fix the business logic**, to make the tests pass. Look at the comments in the code, they may explain its intended behavior (does not mean the method as written behaves as intended). 
+5. **Fix the business logic**, to make the tests pass. Look at the comments in the code, they may explain its intended behavior (does not mean the method as written behaves as intended). 
 
-5.   **Kill all mutants!** The tests that have been fixed this way should catch mutation introduced by PIT. When all the tests (and the logic under test) are fixed, no mutations should be able to survive. So the end state should be passing tests and dead mutants (and no smells).
+6. **Kill all mutants!** The tests that have been fixed this way should catch mutation introduced by PIT. When all the tests (and the logic under test) are fixed, no mutations should be able to survive. So the end state should be passing tests and dead mutants (and no smells).
 
 The rest of this documents offers some general pointers, which may come in handy if you are new to unit testing.
 
