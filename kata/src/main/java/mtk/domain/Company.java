@@ -19,7 +19,7 @@ public class Company
 
     public void setName(String newName)
     {
-        this.name = newName;
+        this.name = name;
     }
 
 

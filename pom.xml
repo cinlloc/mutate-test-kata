@@ -85,6 +85,7 @@
                             <mutators>
                                 <mutator>DEFAULTS</mutator>
                             </mutators>
+                            <skipTests>${skipTests}</skipTests>
                         </configuration>
                     </plugin>
                 </plugins>
