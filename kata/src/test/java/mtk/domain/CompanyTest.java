@@ -22,10 +22,16 @@ public class CompanyTest {
         this.company = null;
     }
 
+
     @Test
     public void companyRenamed() {
         String proposedName = "Cybertron Unlimited, Ltd.";
-        Company aCompany = Mockito.spy(this.company);
+
+        // Company aCompany = this.company;
+        //Company aCompany = Mockito.mock(Company.class);
+        // doReturn(proposedName  ).when(aCompany).getName();
+
+        Company aCompany = Mockito.spy(new Company("toto"));
 
         aCompany.setName(proposedName);
 

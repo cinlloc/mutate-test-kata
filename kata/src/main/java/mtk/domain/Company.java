@@ -1,30 +1,20 @@
 package mtk.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Company {
 
-public class Company
-{
     private String name = "No name";
 
-    public Company(String newName)
-    {
+    public Company(String newName) {
         this.setName(newName);
     }
 
-    public String getName()
-    {
+    public String getName() {
         return this.name;
     }
 
-    public void setName(String newName)
-    {
+    public void setName(String nam) {
         this.name = name;
     }
-
-
-
-
 
 
 }
