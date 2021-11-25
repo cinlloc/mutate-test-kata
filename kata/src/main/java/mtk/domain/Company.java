@@ -19,7 +19,7 @@ public class Company
         return this.name;
     }
 
-    public void setName(String newName)
+    public void setName(String name)
     {
         this.name = name;
     }
@@ -46,7 +46,7 @@ public class Company
      */
     public Employee findEmployeeById(String id)
     {
-        int foundIndex = 0;
+        Integer foundIndex = null;
         for (int i = 0; i < this.employees.size(); i++)
         {
             if (this.employees.get(i).getId().equals(id))
@@ -55,7 +55,7 @@ public class Company
                 break;
             }
         }
-        return this.employees.get(foundIndex);
+        return foundIndex == null ? null : this.employees.get(foundIndex);
     }
 
     public int numberOfEmployees()
@@ -67,12 +67,9 @@ public class Company
     {
         Employee found = this.employees.get(0);
 
-        for (int i = 0; i < employees.size(); i++)
-        {
-            Employee employee = employees.get(i);
-            if (employee.getSalary() < found.getSalary())
-            {
-                employee = found;
+        for (Employee employee : employees) {
+            if (employee.getSalary() > found.getSalary()) {
+                found = employee;
             }
         }
 

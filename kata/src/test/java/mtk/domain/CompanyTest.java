@@ -25,6 +25,14 @@ public class CompanyTest
     }
 
     @Test
+    public void companyNamed()
+    {
+        String companyName = "Cybertron Unlimited, Ltd.";
+        Company company = new Company(companyName);
+        Assert.assertEquals(companyName, company.getName());
+    }
+
+    @Test
     public void companyRenamed()
     {
         String proposedName = "Cybertron Unlimited, Ltd.";
@@ -50,9 +58,10 @@ public class CompanyTest
     @Test
     public void employeeWithLargestSalary()
     {
-        this.company.addEmployee(new Employee("001", "Alice", 120_000.00));
         this.company.addEmployee(new Employee("002", "Bob",   115_000.00));
         this.company.addEmployee(new Employee("003", "Carl",  110_000.00));
+        this.company.addEmployee(new Employee("001", "Alice", 120_000.00));
+        this.company.addEmployee(new Employee("004", "Josette", 120_000.00));
 
         Employee highestEarner = this.company.employeeWithLargestSalary();
         Assert.assertEquals("Alice", highestEarner.getName());
@@ -95,6 +104,12 @@ public class CompanyTest
 
         Employee hopefullyDave = this.company.findEmployeeById("123");
         Employee hopefullyNoOne = this.company.findEmployeeById("999");
+
+        Assert.assertEquals("123", hopefullyDave.getId());
+        Assert.assertEquals("Dave", hopefullyDave.getName());
+        Assert.assertEquals(100_000.00, hopefullyDave.getSalary(), 0.001);
+
+        Assert.assertNull(hopefullyNoOne);
     }
 
     @Test
@@ -107,6 +122,9 @@ public class CompanyTest
         Employee employee = this.company.findEmployeeById("123");
         employee.setName("Tommy Lee");
         employee = this.company.findEmployeeById("123");
-        System.out.println(employee.getName().equals("Tommy Lee") ? "PASSED" : "FAILED");
+
+        Assert.assertEquals("123", employee.getId());
+        Assert.assertEquals("TommyLee", employee.getName());
+        Assert.assertEquals(100_000.00, employee.getSalary(), 0.001);
     }
 }
